@@ -45,7 +45,7 @@ class SafeModelLoader(object):
             'max_epochs': int,
             'metrics': dict,
             'output': dict,
-            'seed': None
+            'seed': int
         },
         'val_dataset': {
             'folder': str,
@@ -94,8 +94,10 @@ class SafeModelLoader(object):
 
         if metadata_version is not None:
             saved_version = metadata_version
-        else:
+        elif model_dict_version is not None:
             saved_version = model_dict_version
+        else:
+            saved_version = 'None'
 
         if saved_version is None:
             raise SeparationException(f"Failed loading model. Expected to find "

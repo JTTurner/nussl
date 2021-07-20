@@ -251,7 +251,7 @@ class SeparationModel(nn.Module):
         metadata = model_dict['metadata']
 
         model = SeparationModel(metadata['config'])
-        model.load_state_dict(model_dict['state_dict'])
+        model.load_state_dict(model_dict['state_dict'], strict=False)
         return model, metadata
 
     def save(self, location, metadata=None, train_data=None, 
